@@ -311,7 +311,7 @@ $.get(
                
                //Get Output
                var uploadsPlaylist = items.contentDetails.relatedPlaylists.uploads;
-               document.getElementById("uploadslink").href = "youtube:///www.youtube.com/playlist?list='"+uploadsPlaylist+"'";
+               document.getElementById("uploadslink").href = "youtube:///www.youtube.com/playlist?list="+uploadsPlaylist;
            });
        }
   )
