@@ -1,5 +1,5 @@
-# verduraiOS
-A stubborn and a bit fidgety solution to use YouTube 10.11.11546 on older iOS (7-10)
+# VerduraPatch
+A more feature compelete version of verduraiOS
 
 [VerduraiOS on Reddit](https://www.reddit.com/r/LegacyJailbreak/comments/uoxxyg/news_verduraios_a_petty_way_to_use_youtube/ "VerduraiOS on Reddit")
 
@@ -17,12 +17,7 @@ A stubborn and a bit fidgety solution to use YouTube 10.11.11546 on older iOS (7
 7. Install the tweak. It is set to "On" by default in the Settings, so you should be able to use it straight away.
 
 ## HOW TO USE IT - WITHOUT API KEY
-1. First download the repo and compile the tweak in THEOS or either download the deb file from the Download section
-2. Download and unzip the weblight.zip file from Download section
-3. Transfer all files present inside the weblight folder in Youtube.app folder - do not copy the folder weblight as directory! All HTML files and folders need to be in the same where the info.plist of Youtube is located - aka the MAIN FOLDER.
-4. Spoof the info.plist file with the latest version of Youtube
-5. Install the tweak. It is set to "On" by default in the Settings, so you should be able to use it straight away.
-6. Use Verdurify system to open Youtube pages.
+VerduraPatch's NO API KEY method is the same
 
 ## VERDURIFY
 Your daily greens with Javascript: paste any video id, playlist id or www.youtube.com link in here to have a direct parsing to the Youtube App. Very useful in case you don't want to use API Key. The get the link, you can use the search tab and look for video on the Youtube webview page. Once you find the video, just click share and copy the url. Past the URL in the text field present in the right menu and search. **REMEMBER TO REMOVE HTTP:// - HTTPS:// from the url!**
