@@ -247,10 +247,10 @@ function getOutput(items){
     
     var outPut = '<li>' +
         '<div class = "list-left">' +
-        '<a data-fancybox data-type="iframe" href="youtube://www.youtube.com/channel/'+channelId+'"><img src="'+thumb+'"></a>' +
+        '<a href="channel_page.html#'+channelId+'"><img src="'+thumb+'"></a>' +
         '</div>' +
         '<div class ="list-right">' +
-        '<h3><a data-fancybox data-type="iframe" href="youtube://www.youtube.com/channel/'+channelId+'">'+title+'</a></h3>' +
+        '<h3><a href="channel_page.html#'+channelId+'">'+title+'</a></h3>' +
         '<small><b>Since:</b> '+videoDate+'</small>' +
         '<p>'+description+'</p>'+
         '<small> <span class="ctitle">Channel ID: </span><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="'+channelId+'" value="'+channelId+'"><br></small>' +

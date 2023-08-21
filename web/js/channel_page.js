@@ -64,16 +64,18 @@ $(function (){
        
        //Get Form Input
        
-       q = $('#query').val();
+       url = window.location.href;
+       q = url.split('#').pop();
        
        //Run GET request on API
        
-       $.get("https://www.googleapis.com/youtube/v3/channels",
+       $.get("https://www.googleapis.com/youtube/v3/search",
              {
             
-             part: 'snippet, id, contentDetails, statistics, status',
-          
-             forUsername: q,
+             part: 'snippet, id',
+             channelId: q,
+             type: "video",
+             order: currentOrder,
              key: API_KEY},
              
              function(data){ 
@@ -81,7 +83,7 @@ $(function (){
            var nextPageToken = data.nextPageToken; //gets the pages of videos
            var prevPageToken = data.prevPageToken;
            
-           console.log(data);
+           console.log(data.items);
            
            $.each(data.items, function(i, items){
                
@@ -123,16 +125,18 @@ function nextPage(){
        
        //Get Form Input
        
-       q = $('#query').val();
+       url = window.location.href;
+       q = url.split('#').pop();
        
        //Run GET request on API
        
-       $.get(
-           "https://www.googleapis.com/youtube/v3/channels",
-           {
+       $.get("https://www.googleapis.com/youtube/v3/search",
+             {
             
-            part: 'snippet, id, contentDetails, statistics, status',
-             forUsername: q,
+             part: 'snippet, id',
+             channelId: q,
+             type: "video",
+             order: currentOrder,
             pageToken: token,
              key: API_KEY},
              
@@ -184,16 +188,18 @@ function prevPage(){
        $('.buttons').html('');
        
      // Get Form Input
-	q = $('#query').val();
+       url = window.location.href;
+       q = url.split('#').pop();
        
        //Run GET request on API
        
-       $.get(
-           "https://www.googleapis.com/youtube/v3/channels",
-           {
+       $.get("https://www.googleapis.com/youtube/v3/search",
+             {
             
-            part: 'snippet, id, contentDetails, statistics, status',
-             forUsername: q,
+             part: 'snippet, id',
+             channelId: q,
+             type: "video",
+             order: currentOrder,
             pageToken: token,
              key: API_KEY},
              
@@ -236,35 +242,33 @@ function prevPage(){
 
 function getOutput(items){
          
-   var channelId = items.id;
+   var videoId = items.id.videoId;
    var description = items.snippet.description;
+   var channelId = items.snippet.channelId; 
    var title = items.snippet.title; 
    var thumb = items.snippet.thumbnails.high.url;
-   var channelDate = items.snippet.publishedAt;
-   var uploadsPlaylist = items.contentDetails.relatedPlaylists.uploads;
-   var viewCount = items.statistics.viewCount;
-   var subscriberCount = items.statistics.subscriberCount;
-   var videoCount = items.statistics.videoCount;
-   var privacyStatus = items.status.privacyStatus;
-
+   var channelTitle = items.snippet.channelTitle;
+   var videoDate = items.snippet.publishedAt;
+   
     //Build Output String
     
     var outPut = '<li>' +
         '<div class = "list-left">' +
-        '<img src="'+thumb+'">' +
-        '<b>Channel status:</b> '+privacyStatus+'<br>' +
+        '<a data-fancybox data-type="iframe" href="youtube://www.youtube.com/embed/'+videoId+'"><img src="'+thumb+'"></a>' +
         '</div>' +
-        '<div class ="list-right">' +
-        '<h3><a href="channel_page.html#'+channelId+'">'+title+'</a></h3>' +
-        '<b>Views:</b> '+viewCount+' | <b>Subscirbers:</b> '+subscriberCount+'<br>' +
-        '<b>Joined on:</b> '+channelDate+'<br>' +
+        '<h3><a data-fancybox data-type="iframe" href="youtube://www.youtube.com/embed/'+videoId+'">'+title+'</a></h3>' +
+        '<small> By <a href="channel_page.html#'+channelId+'"><span class="ctitle">'+channelTitle+'</span></a> on '+videoDate+'</small>' +
         '<p>'+description+'</p>'+
-        '<a href="youtube:///www.youtube.com/playlist?list='+uploadsPlaylist+'"><span class="ctitle">Uploaded Videos playlist ('+videoCount+')</span></a><br>' +
-        '<b>Channel ID:</b><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="'+channelId+'" value="'+channelId+'">' +
+        '<small> <span class="ctitle">Channel ID: </span><input onClick="this.setSelectionRange(0, this.value.length)" type="text" id="'+channelId+'" value="'+channelId+'"><br></small>' +
+        '</div>' + 
         '</li>' +
         '<div class ="clearfix"></div>'
         
     return outPut;
+        
+        
+        
+        
          
      }; 
 
@@ -287,3 +291,31 @@ function getButtons(prevPageToken, nextPageToken){
     return btnoutput;
     
 }
+            
+function uploadsthing() {
+       url = window.location.href;
+       q = url.split('#').pop();
+$.get(
+           "https://www.googleapis.com/youtube/v3/channels",
+           {
+            
+            part: 'snippet,contentDetails,statistics',
+             id: q,
+             key: API_KEY},
+             
+             function(data){ 
+           
+           console.log(data);
+           
+           $.each(data.items, function(i, items){
+               
+               //Get Output
+               var uploadsPlaylist = items.contentDetails.relatedPlaylists.uploads;
+               document.getElementById("uploadslink").href = "youtube:///www.youtube.com/playlist?list='"+uploadsPlaylist+"'";
+           });
+       }
+  )
+}
+
+uploadsthing();
+search();
