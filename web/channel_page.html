@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link rel="stylesheet" href="css/style.css" />
+   <script>var currentOrder="date";</script>
+   <script src="js/jquery.min.js"></script>
+   <script src="js/jquery.fancybox.js"></script>
+   <script src="js/API_KEY.js"></script>
+    <script src="js/channel_page.js"></script>
+  </head>
+
+  <body>
+     <body>
+       <div id = "container">
+           <header>
+               <h1>Verdura<span>Pages</span></h1>
+               <a href="menu.html">Go back to menu</a><br>
+               <p>If you want to look at a channels main page, then you've come to the right place! &#129367;</p>
+           </header>
+           <section>
+               <a id="uploadslink" data-fancybox data-type="iframe"><span>Go to Uploads Playlist</span></a>
+               <p id='chosen'>Selected Order: Newest First</p>
+               <button onclick="$('#chosen').html('Selected Order: Newest First');currentOrder='date';search();">Newest First</button><br><button onclick="$('#chosen').html('Selected Order: Most Popular');currentOrder='viewCount';search();">Most Popular</button>
+               <ul id='results'></ul>
+               <div class="buttons"></div>
+              </section>    
+              <footer>
+                <p><a href="read_comments.html">Read Comments</a></p>
+                <p>Search Videos by: <a href="search_videos.html">Title</a></p>
+                <p>Search Playlists by: <a href="search_playlists.html">Title</a> | <a href="search_playlists_channelID.html">ChannelID</a></p>
+                <p>Search Channels by: <a href="search_channel_name.html"><b>Title</b></a> | <a href="specific_channel_name.html">Specific Channel Name</a> | <a href="specific_channel_id.html">Specific Channel ID</a></p>
+         </footer>
+         </div>
+      </body>
+  </html>
