@@ -1,6 +1,8 @@
 # VerduraPatch
 A more feature compelete version of verduraiOS
 
+Check out our sister project [SporkTube](https://github.com/AnnoyedArt1256/SporkTube)!
+
 [VerduraiOS on Reddit](https://www.reddit.com/r/LegacyJailbreak/comments/uoxxyg/news_verduraios_a_petty_way_to_use_youtube/ "VerduraiOS on Reddit")
 
 [Watch Video](https://www.youtube.com/watch?v=mxyB9FGudBY)
